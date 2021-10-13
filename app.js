@@ -11,33 +11,51 @@ function getData(url) {
     return JSON.parse(ajax.response);
 }
 
-const newsFead = getData(NEWS_URL);
-const ul = document.createElement('ul');
+function newsFeed () {
+    const newsList = [];
+    const newsFead = getData(NEWS_URL);
 
-window.addEventListener('hashchange', function () {
+    newsList.push('<ul>');
+
+    for (let i = 0; i < 10; i++) {
+        newsList.push(`
+            <li>
+                <a href = "#${newsFead[i].id}">
+                ${newsFead[i].title} (${newsFead[i].comments_count})
+                </a>
+            </li>
+    `);
+    newsList.push('</ul>');
+
+    container.innerHTML = newsList.join(''); // 합쳐주는 함수
+    }
+};
+
+function newsDetail () {
     const id = location.hash.substr(1);
 
     const newsContent = getData(CONTENTS_URL.replace('@id', id));
     const title = document.createElement('h1');
-    
-    title.innerHTML = newsContent.title;
 
-    contents.appendChild(title);
-});
-
-for (let i = 0; i < 10; i++) {
-    const div = document.createElement('div');
-
-    div.innerHTML = `
-        <li>
-            <a href = "#${newsFead[i].id}">
-            ${newsFead[i].title} (${newsFead[i].comments_count})
-            </a>
-        </li>
+    container.innerHTML = `
+        <h1>${newsContent.title}</h1>
+        
+        <div>
+            <a href='#'>'목록으로'</a>
+        </div>
     `;
+};
 
-    ul.appendChild(div.firstElementChild);
-}
+function router () {
+    const routePath = location.hash; 
 
-container.appendChild(ul);
-container.appendChild(contents);    
+    if (routePath === '') { // 해시에 아무런 id가 없는 경우
+        newsFeed();
+    } else {
+        newsDetail();
+    }
+};
+
+window.addEventListener('hashchange', router);
+
+router();
