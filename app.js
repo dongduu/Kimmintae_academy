@@ -24,7 +24,7 @@ function newsFeed () {
         newsList.push(`
             <li>
                 <a href = "#/show/${newsFeed[i].id}">
-                ${newsFeed[i].title} (${newsFeed[i].comments_count})
+                    ${newsFeed[i].title} (${newsFeed[i].comments_count})
                 </a>
             </li>
     `);
@@ -59,7 +59,7 @@ function router () {
     if (routePath === '') { // 해시에 아무런 id가 없는 경우
         newsFeed();
     } else if (routePath.indexOf('#/page/') >= 0) { // indexOf: 있으면 0 이상의 위치 값을 리턴, 없으면 -1을 리턴
-        store.currentPage = Number(substr(7));
+        store.currentPage = Number(routePath.substr(7));
         newsFeed();
     } else {
         newsDetail();
