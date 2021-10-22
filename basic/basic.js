@@ -1,11 +1,10 @@
-function addAge (age) {
-    if (typeof age === 'Number') {
-        return age + 1;
-    } else {
-        throw 'ERROR!';
-    }
+let x = 10; // 변수
+
+const y = 200; // 상수
+
+const obj = {
+    height: 200,
+    width: 300,
 };
 
-let age = addAge('30');
-
-console.log(age);
+obj.height = 400; // 속성은 변경 가능
