@@ -1,16 +1,7 @@
-let age = 10;
-
-function setAge () {
-
+const Color = {
+    Red: 1,
+    Blue: 2,
+    Yellow: 3,
 };
+Color.Red;
 
-const o = {
-    age: 10,
-}
-
-const p = {
-    age: 11,
-    ['myName']: '이동주', // computed property
-}
-
-o.myName 
