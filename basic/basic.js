@@ -1,7 +1,11 @@
-const Color = {
-    Red: 1,
-    Blue: 2,
-    Yellow: 3,
+function addAge (age) {
+    if (typeof age === 'Number') {
+        return age + 1;
+    } else {
+        throw 'ERROR!';
+    }
 };
-Color.Red;
 
+let age = addAge('30');
+
+console.log(age);
