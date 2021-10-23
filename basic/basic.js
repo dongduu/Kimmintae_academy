@@ -1,23 +1,27 @@
-let a = 10;
-let b = a;
+let age = 10;
 
-b = 20;
-
-let o = {
-    loading: false
-};
-
-
-function foo(a) {
-    o.loading = true;
-}
-
-foo(o);
-
-if (o.loading === true) {
-    console.log('true');
+if (age === 10 ) {
+    console.log('나이는 10세');
+} else if (age === 20){
+    console.log('나이는 20세');
 } else {
-    console.log('false');
+    console.log('모르겠습니다.');
 }
 
-console.log('done');
+if (age) {
+    console.log('나이를 저장했습니다.')
+}
+
+let age2 = 40;
+
+switch (age2) {
+    case 1:
+        console.log(1);
+    case 2:
+        console.log(2);
+    case 3:
+        console.log(3);
+    default:
+        console.log('??');
+    break;
+}
