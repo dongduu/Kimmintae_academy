@@ -1,10 +1,34 @@
-let x = 10; // 변수
+const colors = ['red', 'yellow', 'blue'];
 
-const y = 200; // 상수
+const yellow = colors[1];
+const red = colors[0];
+const blue = colors[2];
 
-const obj = {
-    height: 200,
-    width: 300,
-};
+yellow;
 
-obj.height = 400; // 속성은 변경 가능
+const [red, yellow, blue] = colors;
+
+yellow;
+
+let a = 10;
+let b = '10';
+
+if (a == b) {
+    console.log('true');
+} else {
+    console.log('false')
+} // true
+
+if (a === b) {
+    console.log('true');
+} else {
+    console.log('false');
+} // false
+
+if (a === b) {
+    a = 0;
+} else {
+    a = 1;
+}
+
+a = (a === b) ? 0 : 1;
