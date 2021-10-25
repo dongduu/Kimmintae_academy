@@ -1,27 +1,37 @@
-let age = 10;
+const arr = ['a', 'b', 'c', 'd'];
 
-if (age === 10 ) {
-    console.log('나이는 10세');
-} else if (age === 20){
-    console.log('나이는 20세');
-} else {
-    console.log('모르겠습니다.');
+// console.log(arr[1]);
+
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
 }
 
-if (age) {
-    console.log('나이를 저장했습니다.')
+let i = 0;
+while (i < arr.length) {
+    console.log(arr[1]);
+    i++;
 }
 
-let age2 = 40;
+i = 0;
+do {
+    console.log(arr[1]);
+    i++;
+} while (i < arr.length)
 
-switch (age2) {
-    case 1:
-        console.log(1);
-    case 2:
-        console.log(2);
-    case 3:
-        console.log(3);
-    default:
-        console.log('??');
-    break;
+for (const item of arr) { // item은 매번 반복을 할 때마다 만들게 됨
+    console.log(item);
+}
+
+for (const index in arr) {
+    console.log(arr[index]);
+}
+
+const obj = {
+    color: 'red',
+    width: '200',
+    height: '100',
+}
+
+for (const key in obj) {
+    console.log(obj[key]);
 }
