@@ -1,37 +1,27 @@
-const arr = ['a', 'b', 'c', 'd'];
-
-// console.log(arr[1]);
-
-for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
+function doException () {
+    throw new Error('와우! 오류야!')
 }
 
-let i = 0;
-while (i < arr.length) {
-    console.log(arr[1]);
-    i++;
+function noException () {
+    return true;
 }
 
-i = 0;
-do {
-    console.log(arr[1]);
-    i++;
-} while (i < arr.length)
-
-for (const item of arr) { // item은 매번 반복을 할 때마다 만들게 됨
-    console.log(item);
+function callException (type) {
+    if (type === "do") {
+        doException();
+    } else {
+        noException();
+    }
 }
 
-for (const index in arr) {
-    console.log(arr[index]);
+function main () {
+    try {
+        callException('do');
+    } catch (error) {
+        console.log(error);
+    } finally {
+        console.log('done')
+    }
 }
 
-const obj = {
-    color: 'red',
-    width: '200',
-    height: '100',
-}
-
-for (const key in obj) {
-    console.log(obj[key]);
-}
+main();
