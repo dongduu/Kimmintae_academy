@@ -9,3 +9,9 @@ const myFn2 = function () {
 };
 
 myFn2();
+myFn2.call();
+myFn2.apply();  
+
+(function () {
+    console.log('nononononono');
+})();
