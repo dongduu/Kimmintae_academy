@@ -1,26 +1,33 @@
-function ul(child: string): string {
-    return `<ul>${child}</ul>`;
+function delay(ms:number) : Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+        setTimeout(() => {
+            if(Math.floor(Math.random() *10) % 2 ===0){
+                resolve('success');
+            } else {
+                reject('failure');;
+            }
+        }, ms);
+    });
 }
 
-function ol(child: string): string {
-    return `<ol>${child}</ol>`;
-}
+// 비동기 프로그래밍 코드
+// then과 catch에 callback 함수를 전달해야함
+delay(3000)
+    .then((result: string) =>{
+        console.log('done promise' + result);
+    })
+    .catch((error: string) =>{
+        console.error('fail promise!' + error);
+    });
 
-function makeLI(
-    container: (child: string) => string, // 함수만 넘겨주셈(arrow 함수)
-    contents: string[]
-): string {
-    const liList = [];
-
-    for (const content of contents) {
-        liList.push(`<Li>${content}</Li>`) // 받은 배열에서 하나씩 푸시
+async function main(){
+    try{
+        console.log('start job')
+        const result = await delay(3000);
+        console.error('done async!' + result);
+    } catch(e) {
+        console.error('fail async' + e);
     }
-
-    return container(liList.join(''));
 }
 
-const htmlUL = makeLI(ul, ['월', '화', '수','목','금','토','일']);
-const htmlOL = makeLI(ol, ['봄', '여름', '가을', '겨울']);
-
-console.log(htmlUL);
-console.log(htmlOL);
+main();
