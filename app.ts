@@ -7,13 +7,13 @@ function ol(child: string): string {
 }
 
 function makeLI(
-    container: (child: string) => string,
+    container: (child: string) => string, // 함수만 넘겨주셈(arrow 함수)
     contents: string[]
 ): string {
     const liList = [];
 
     for (const content of contents) {
-        liList.push(`<Li>${content}</Li>`)
+        liList.push(`<Li>${content}</Li>`) // 받은 배열에서 하나씩 푸시
     }
 
     return container(liList.join(''));
