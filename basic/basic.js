@@ -1,42 +1,52 @@
-function makeInfiniteEnergyGenerator(){
-    let energy = 0;
-    return function (booster = 0){
-        if(booster){
-            energy += booster;
-        } else {
-            energy++;
-        }
-
-        return energy;
-    };
+function calculateCircleArea(radius){
+    return radius * radius * Math.PI;
 }
 
-function* infiniteEnergyGenerator() {
-    let energy = 1;
-    while(true){ // 무한 루프
-        const booster = yield energy;
-
-        if(booster){
-            energy += booster;
-        } else {
-            energy++;
-        }
-    } // return 없음
-}
-/*
-const energy = makeInfiniteEnergyGenerator();
-
-for(let i =0; i<5; i++){
-    console.log(energy());
+function calculateRectArea(width, height){
+    return width * height;
 }
 
-console.log(energy(5));
-*/
-const energyGenerator = infiniteEnergyGenerator();
+// circle 클래스
+class Circle {
+    #radius;
 
+    constructor(radius){
+        this.#radius = radius;
+    }
+    get radius(){
+        return this.#radius;
+    }
 
-for(let i =0; i<5; i++){
-    console.log(energyGenerator.next()); // 에너지제너레이터는 객체이기 때문에 메소드 사용
+    area = () => this.#radius * this.#radius * Math.PI;
 }
 
-console.log(energyGenerator.next(5))
+// rect 클래스
+class Rect {
+    #width;
+    #height;
+
+    constructor(width, height){
+        this.#width = width;
+        this.#height = height;
+    }
+
+    get width(){
+        return this.#width;
+    }
+
+    get height(){
+        return this.#height;
+    }
+
+    area = () => this.#width * this.#height;
+}
+
+const circle = new Circle(50);
+const rect = new Rect(150,200);
+
+
+console.log(calculateCircleArea(circle.radius));
+console.log(calculateRectArea(rect.width, rect.height));
+
+console.log(circle.area())
+console.log(rect.area())
