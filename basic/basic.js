@@ -28,28 +28,31 @@ console.log(oneBooks);
 console.log(books);
 console.log(books.length);
 
+// 꺼내온 데이터 위치에 다른 값 추가
 const twoBooks = books.splice(1, 2, '햄릿', '오셀로', '리어왕');
 
 console.log(twoBooks);
 console.log(books);
 console.log(books.length);
 
-twoBooks.unshift('한여름 밤의 꿈');
+twoBooks.shift(); // 배열을 맨앞에서부터 빼옴
+
+twoBooks.unshift('한여름 밤의 꿈'); // 맨앞에서부터 추가
 
 console.log(twoBooks);
 
-const allBooks = books.join();
+const allBooks = books.join(); // 배열 안에 있는 모든 데이터를 하나의 문자열로 합치는 메소드, 괄호 사이에는 구분자
 
 console.log(allBooks);
 
-const newBooks = allBooks.split(',');
+const newBooks = allBooks.split(','); // 구분자로 구분되어 있는 하나의 문자열이 있다면 그것을 배열로 바꿈
 
 console.log(newBooks);
 
 console.log(oneBooks);
 console.log(twoBooks);
 
-const nextBooks = oneBooks.concat(twoBooks);
+const nextBooks = oneBooks.concat(twoBooks); 
 
 console.log(newBooks);
 
