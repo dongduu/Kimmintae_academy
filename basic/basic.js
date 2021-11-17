@@ -1,52 +1,58 @@
-function calculateCircleArea(radius){
-    return radius * radius * Math.PI;
-}
+const books = []; // 빈 값에 추가하는 형식
+// const books = ['a', 'b', 1, 2] -> 배열을 만드는 순간 값도 정해주는 형식
 
-function calculateRectArea(width, height){
-    return width * height;
-}
+// 원시적인 방법으로 추가
+books[0] = "헨리 6세 제1부";
+books[1] = "헨리 6세 제2부";
+books[2] = "헨리 6세 제3부";
 
-// circle 클래스
-class Circle {
-    #radius;
+// push 메소드 사용(배열 맨 마지막에 추가)
+books.push("리처드 3세");
+books.push("실수 연발");
+books.push("말괄량이 길들이기");
 
-    constructor(radius){
-        this.#radius = radius;
-    }
-    get radius(){
-        return this.#radius;
-    }
+console.log(books);
+console.log(books.length);
 
-    area = () => this.#radius * this.#radius * Math.PI;
-}
+// pop 메소드 사용(배열 맨 마지막 데이터 꺼내옴)
+books.pop();
+books.pop();
 
-// rect 클래스
-class Rect {
-    #width;
-    #height;
+console.log(books); // 원래 있던 배열에서는 삭제
+console.log(books.length);
 
-    constructor(width, height){
-        this.#width = width;
-        this.#height = height;
-    }
+// 꺼내올 데이터의 위치 지정 가능
+const oneBooks = books.slice(1,2);
 
-    get width(){
-        return this.#width;
-    }
+console.log(oneBooks);
+console.log(books);
+console.log(books.length);
 
-    get height(){
-        return this.#height;
-    }
+const twoBooks = books.splice(1, 2, '햄릿', '오셀로', '리어왕');
 
-    area = () => this.#width * this.#height;
-}
+console.log(twoBooks);
+console.log(books);
+console.log(books.length);
 
-const circle = new Circle(50);
-const rect = new Rect(150,200);
+twoBooks.unshift('한여름 밤의 꿈');
 
+console.log(twoBooks);
 
-console.log(calculateCircleArea(circle.radius));
-console.log(calculateRectArea(rect.width, rect.height));
+const allBooks = books.join();
 
-console.log(circle.area())
-console.log(rect.area())
+console.log(allBooks);
+
+const newBooks = allBooks.split(',');
+
+console.log(newBooks);
+
+console.log(oneBooks);
+console.log(twoBooks);
+
+const nextBooks = oneBooks.concat(twoBooks);
+
+console.log(newBooks);
+
+const nextBookList = [...oneBooks, ...twoBooks];
+
+console.log(newBooks);
