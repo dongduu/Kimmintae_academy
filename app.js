@@ -40,13 +40,13 @@ function newsFeed() {
 }
 
 function newsDetail() {
-  const id = location.hash.substr(1);
+  const id = location.hash.substr(7);
   const newsContent = getData(CONTENTS_URL.replace("@id", id));
 
   container.innerHTML = `
     <h1>${newsContent.title}</h1>
 
-    <div><a href="#">목록으로</a></div>
+    <div><a href="#/page/${store.currentPage}">목록으로</a></div>
   `;
 }
 
