@@ -55,7 +55,7 @@ function router() {
   if (routePath === "") {
     newsFeed();
   } else if (routePath.indexOf("#/page/") >= 0) {
-    store.currentPage = 2;
+    store.currentPage = Number(routePath.substr(7));
     newsFeed();
   } else {
     newsDetail();
