@@ -20,7 +20,7 @@ function newsFeed() {
 
   newsList.push("<ul>");
 
-  for (i = 0; i < 10; i++) {
+  for (i = (store.currentPage - 1) * 10; i < store.currentPage * 10; i++) {
     newsList.push(`<li>
     <a href="#/show/${newsFeed[i].id}">
       ${newsFeed[i].title} (${newsFeed[i].comments_count})
@@ -31,8 +31,8 @@ function newsFeed() {
   newsList.push("</ul>");
   newsList.push(`
     <div>
-      <a href="#/page/${currentPage - 1}">이전 페이지</a>
-      <a href="#/page/${currentPage + 1}">다음 페이지</a>
+      <a href="#/page/${store.currentPage - 1}">이전 페이지</a>
+      <a href="#/page/${store.currentPage + 1}">다음 페이지</a>
     </div>
   `);
 
