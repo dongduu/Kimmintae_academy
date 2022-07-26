@@ -18,7 +18,7 @@ function newsFeed() {
   const newsFeed = getData(NEWS_URL);
   const newsList = [];
   let template = `
-    <div class="bg-gray-200 min-h-screen">
+    <div class="bg-gray-600 min-h-screen">
       <div class="bg-white text-xl">
         <div class="mx-auto px-4">
           <div class="flex justify-between items-center py-6">
@@ -40,11 +40,25 @@ function newsFeed() {
   `;
 
   for (i = (store.currentPage - 1) * 10; i < store.currentPage * 10; i++) {
-    newsList.push(`<li>
-    <a href="#/show/${newsFeed[i].id}">
-      ${newsFeed[i].title} (${newsFeed[i].comments_count})
-    </a>
-  </li>`);
+    newsList.push(`
+    <div class="p-6 bg-white mt-6 rounded-lg shadow-md transition-colors duration-500 hover:bg-green-100">
+      <div class="flex">
+        <div class="flex-auto">
+          <a href="#/show/${newsFeed[i].id}">${newsFeed[i].title}</a>
+        </div>
+        <div class="text-center text-sm">
+          <div class="w-10 text-white bg-green-300 rounded-lg px-0 py-2">${newsFeed[i].comments_count}</div>
+        </div>
+      </div>
+      <div class="flex mt-3">
+        <div class="grid grid-cols-3 text-sm text-gray-500">
+          <div><i class="fas fa-user mr-1"></i>${newsFeed[i].user}</div>
+          <div><i class="fas fa-heart mr-1"></i>${newsFeed[i].points}</div>
+          <div><i class="fas fa-clock mr-1"></i>${newsFeed[i].time_ago}</div>
+        </div>
+      </div>
+    </div>
+  `);
   }
 
   template = template.replace("{{__news_feed__}}", newsList.join(""));
