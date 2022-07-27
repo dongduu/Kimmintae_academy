@@ -49,6 +49,7 @@ function newsFeed() {
 
   if (newsFeed.length === 0) {
     newsFeed = store.feeds = makeFeeds(getData(NEWS_URL));
+    console.log(store.feeds);
   }
 
   for (i = (store.currentPage - 1) * 10; i < store.currentPage * 10; i++) {
